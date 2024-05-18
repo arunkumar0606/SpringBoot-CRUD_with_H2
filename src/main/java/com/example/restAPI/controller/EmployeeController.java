@@ -2,6 +2,7 @@ package com.example.restAPI.controller;
 
 import com.example.restAPI.model.Employee;
 import com.example.restAPI.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +51,7 @@ public class EmployeeController {
      */
 
     @PostMapping("/addEmployees")
-    public ResponseEntity<Object> addEmployees(@RequestBody List<Employee> employees) {
+    public ResponseEntity<Object> addEmployees(@Valid @RequestBody List<Employee> employees) {
         return employeeService.addEmpoyees(employees);
     }
 
@@ -64,7 +65,7 @@ public class EmployeeController {
      */
 
     @PutMapping("/updateEmployee/{id}")
-    public ResponseEntity<Object> updateEmployee(@RequestBody Employee employee, @PathVariable("id") int id) {
+    public ResponseEntity<Object> updateEmployee(@Valid @RequestBody Employee employee, @PathVariable("id") int id) {
         return employeeService.updateEmployee(id, employee);
     }
 

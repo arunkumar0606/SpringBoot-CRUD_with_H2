@@ -1,9 +1,8 @@
 package com.example.restAPI.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Employee {
@@ -12,10 +11,15 @@ public class Employee {
     //@GeneratedValue(strategy = GenerationType.AUTO)
     private int empNo;
 
+    @NotNull(message = "Please Enter the name")
     private String empName;
 
+
+    @Email(message = "Please Enter Valid Email")
     private String empEmail;
 
+    @Min(value = 25,message = "Age should be above 25")
+    @Max(value = 60,message = "Age should be below 60")
     private int empAge;
 
     public int getEmpNo() {
